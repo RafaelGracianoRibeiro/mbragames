@@ -1,11 +1,22 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
+const score = document.querySelector(".score--value")
+const finalScore = document.querySelector(".final-score span")
+const menu = document.querySelector(".menu-screen")
+const buttonPlay = document.querySelector(".btn-play")
+
 const audio = new Audio("./assets/audio.mp3")
 
 const size = 30
 
-const snake = [{ x:270, y:240 }]
+const initialPosition = { x:270, y:240 }
+
+let snake = [initialPosition]
+
+const incrementScore = () => {
+    score.innerText = +score.innerText + 10
+}
 
 const randomNumber = (min, max) => {
     return Math.round(Math.random() * (max -  min) + min)
@@ -105,6 +116,7 @@ const checkEat = () => {
     const head = snake[snake.length -1]
 
     if (head.x == food.x && head.y == food.y) {
+        incrementScore()
         snake.push(head)
         audio.play()
 
@@ -112,8 +124,8 @@ const checkEat = () => {
        let y = randomPosition()
 
        while (snake.find((position) => position.x == x && position.y == y)){
-            let x = randomPosition()
-            let y = randomPosition()
+            x = randomPosition()
+            y = randomPosition()
        }
        
        food.x = x
@@ -121,6 +133,32 @@ const checkEat = () => {
        food.color = randomColor()
     }
 }
+
+const checkCollision = () => {
+    const head = snake[snake.length - 1]
+    const canvasLimit = canvas.width - size
+    const neckIndex = snake.length -2
+
+    const wallCollision = head.x < 0 || head.x > canvasLimit || head.y < 0 || head.y > canvasLimit
+
+    const selfCollision = snake.find((position, index) => {
+        return index < neckIndex && position.x == head.x && position.y == head.y
+
+    })
+
+    if (wallCollision || selfCollision) {
+        gameOver()
+    }
+}
+
+const gameOver = () => {
+    direction = undefined
+
+    menu.style.display = "flex"
+    finalScore.innerText = score.innerText
+    canvas.style.filter = "blur(2px)"
+}
+
 
 const gameLoop = () => {
     clearInterval(loopId)
@@ -131,6 +169,7 @@ const gameLoop = () => {
     moveSnake()
     drawSnake()
     checkEat()
+    checkCollision()
 
     loopId = setTimeout(() => {
         gameLoop()
@@ -157,4 +196,15 @@ document.addEventListener("keydown", ({ key }) => {
     if (key == "ArrowUp" && direction !== "down"){
         direction = "up"
     }
+})
+
+buttonPlay.addEventListener("click", () => {
+    score.innerText = "00"
+    menu.style.display = "none"
+    canvas.style.filter = "none"
+
+    snake = [initialPosition]
+    direction = undefined
+
+    gameLoop()
 })
