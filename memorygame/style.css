@@ -4,7 +4,7 @@ body {
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    background: linear-gradient(to bottom, #5f7ca8, #655574);
+    background: linear-gradient(to bottom, #1a161d, #4a385c);
     font-family: Arial, sans-serif;
 }
 
@@ -48,7 +48,7 @@ h1{
 }
 
 .card-front {
-    background-color: #add8e6;
+    background-color: #bbb9b9;
     color: #fff;
 }
 
@@ -74,4 +74,42 @@ h1{
 
 .back-arrow:hover {
     background-color: #555;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    color: #000;
+}
+
+#play-again {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a385c;
+    color: #fff;
+}
+
+#play-again:hover {
+    background-color: #333;
 }
