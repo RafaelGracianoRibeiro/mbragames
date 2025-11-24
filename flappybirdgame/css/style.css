@@ -50,8 +50,10 @@
 }
 
 .score {
-	position: fixed;
-	z-index: 10;
+    position: absolute;
+	left: 20px;
+	top: 20px;
+    left: 20px;
 	height: 10vh;
 	font-size: 10vh;
 	font-weight: 100;
@@ -67,22 +69,6 @@
 .score_val {
 	color: gold;
 	font-weight: bold;
-}
-
-.back-arrow {
-    position: absolute;
-    padding: 12px;
-    border-radius: 20px;
-    top: 20px;
-    left: 20px;
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #333;
-}
-
-.back-arrow:hover {
-    background-color: #555;
 }
 
 

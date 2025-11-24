@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>Tic-Tac-Toe</title>
+    <link rel="icon" type="image/png" href="./assets/icon.png">
 </head>
 <body>
+    <a href="../index.html" class="back-arrow">&larr; Voltar</a>
     <div class="board" data-board>
         <div class="cell x" data-cell ></div>
         <div class="cell circle" data-cell ></div>
@@ -19,10 +21,12 @@
         <div class="cell" data-cell ></div>
     </div>
 
-    <div class="winning-message">
-        <p> X Win!</p>
-        <button>Restart</button>
+    <div class="winning-message" data-winning-message>
+      <p class="winning-message-text" data-winning-message-text>X Venceu!</p>
+      <button class="winning-message-button" data-restart-button>
+        Reiniciar!
+      </button>
     </div>
     <script src="./js/script.js"></script>
-</body>
+  </body>
 </html>
