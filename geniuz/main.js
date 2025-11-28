@@ -4,6 +4,7 @@ let score = 0;//Pontuação do jogador
 let level = document.querySelector('#level');//Level do jogador
 let maxLevel = document.querySelector('#max-level');//Maior level alcançado
 
+
 //Variável para controlar o turno do jogador 
 let playerPlays = false;
 
@@ -122,5 +123,7 @@ colors.forEach((color, index) => {
         checkOrder();//Verifica a ordem clicada pelo jogador
     });
 });
+
+
 
 loadMaxLevel();
